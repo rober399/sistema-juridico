@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/full.css') }}">
+
+</head>
+<body>
+  
+    <section class="full-box cover dashboard-sideBar">
+		<div class="full-box dashboard-sideBar-bg btn-menu-dashboard"></div>
+		<div class="full-box dashboard-sideBar-ct">
+			
+			
+			<div class="full-box text-uppercase text-center text-titles dashboard-sideBar-title">
+                    <br>
+                    <img src="static/img/IMG-20191111-WA0001.jpg" width="250px" height="180px">
+				<hr>
+			   </div>
+	   	
+			<!-- Menu -->
+			<ul class="list-unstyled full-box dashboard-sideBar-Menu">
+				<li>
+					<a href="{{ url_for('inicio') }}"> Inicio</a>
+				</li>
+				<li>
+					<a href="{{ url_for('Registroclientes') }}" class="btn-sideBar-SubMenu">Registro de Clientes</a>
+				</li>
+				<li>
+					<a href="{{ url_for('Servicios') }}" class="btn-sideBar-SubMenu">Servicios</a>
+				</li>
+				<li>
+					<a href="{{ url_for('Citas') }}" class="btn-sideBar-SubMenu">Citas</a>
+				</li>	
+				<li>
+					<a href="{{ url_for('Registroadmin') }}" class="btn-sideBar-SubMenu">Administracion</a>
+                </li>
+                <li>
+					<a href="{{ url_for('Cliser') }}" class="btn-sideBar-SubMenu">Clientes y Servicios</a>
+				</li>
+			</ul>
+			<hr>
+		</div>
+	</section>
+    
+    <div class="franja">
+            <h4 class="parrafito">
+                <a href="{{ url_for('logout') }}">Cerrar Sesion</a>
+            </h4>
+    </div>
+
+     <center>
+    
+        <div class="form">
+                <div class="lista">
+                        <hr class="rh">
+                <a href="{{ url_for('Citas') }}" class="btn btn-success">AGREGAR NUEVA CITA</a>
+                </div>
+
+                <hr class="rh">
+        <div class="cuenta">
+       <h1>Lista de Citas</h1>
+       <table>
+           <thead>
+               <tr>
+                   <td>Id</td>
+                   <td>Fecha de Cita</td>
+                   <td>Hora de Cita</td>
+                   <td>Dui de Cliente con Cita</td>
+                   <td>Dui de Administrador</td>
+                 
+               </tr>
+           </thead>
+           <tbody>
+               {% for registro in registros %}
+               <tr>
+                   <td>{{ registro.0 }}</td>
+                   <td>{{ registro.1 }}</td>
+                   <td>{{ registro.2 }}</td>
+                   <td>{{ registro.3 }}</td>
+                   <td>{{ registro.4 }}</td>
+                   <td>{{ registro.5 }}</td>
+                   <td> 
+                       <a href="/EditarCita/{{ registro.0 }}" class="coloron">Actualizar</a>
+                       <a href="/EliminarCita/{{ registro.0 }}"class="col">Eliminar</a>
+                   </td>
+               </tr>
+               {% endfor%}
+
+           </tbody>
+       </table>
+      
+            </div>
+        </div>
+       
+</center> 
+</body>
+</html>

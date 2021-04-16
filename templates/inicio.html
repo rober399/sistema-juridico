@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/full.css') }}">
+
+</head>
+<body>
+  
+    <section class="full-box cover dashboard-sideBar">
+		<div class="full-box dashboard-sideBar-ct">
+			
+			
+			<div class="full-box text-uppercase text-center text-titles dashboard-sideBar-title">
+				<br>
+				<img src="static/img/IMG-20191111-WA0001.jpg" width="250px" height="180px">
+				<hr>
+			   </div>
+	   	
+			<!-- Menu -->
+			<ul class="list-unstyled full-box dashboard-sideBar-Menu">
+				<li>
+					<a href="{{ url_for('inicio') }}"> Inicio</a>
+				</li>
+				{% if session['Nombres'] %}
+        
+                            <li>
+					<a href="{{ url_for('Registroclientes') }}" class="btn-sideBar-SubMenu">Registro de Clientes</a>
+				</li>
+				<li>
+					<a href="{{ url_for('Servicios') }}" class="btn-sideBar-SubMenu">Servicios</a>
+				</li>
+				<li>
+					<a href="{{ url_for('Citas') }}" class="btn-sideBar-SubMenu">Citas</a>
+				</li>	
+				<li>
+					<a href="{{ url_for('Registroadmin') }}" class="btn-sideBar-SubMenu">Administracion</a>
+				</li>
+				
+				<li>
+					<a href="{{ url_for('Cliser') }}" class="btn-sideBar-SubMenu">Clientes y Servicios</a>
+				</li>
+				
+			
+				{% endif %}
+			</ul>
+			<hr>
+		</div>
+	</section>
+	<div class="franja">
+		<h4 class="parrafito">
+			<a href="{{ url_for('logout') }}">Cerrar Sesion</a>
+		</h4>
+	</div>
+     <center>
+    <div>
+        <div class="form">
+        <div class="cuenta"><br><br>
+			{% block title %}  {% endblock %}
+
+			{% block content %}
+			
+			<div class="container">
+				<div class="row">
+					<div class="col-md-6 col-md-offset-3">
+						
+		
+			
+							{% if session['Nombres'] %}
+			
+			
+							<h2 class="nose"IENVENIDO {{ session['Nombres'] }}</h2>
+
+							<hr class="ultimo">
+							<img src="static/img/IMG-20191111-WA0001.jpg" width="290px" height="250px">
+							<hr class="ultimo">
+							{% else %}
+			
+			
+							<h2>¿No tienes usuario? <a href="{{ url_for('Registroadmin') }}">registrate</h2></a>
+			
+			
+							{% endif %}
+						
+					</div>
+				</div>
+			</div>
+			{% endblock %}
+            </div>
+        </div>
+    </div>   
+</center> 
+</body>
+</html>

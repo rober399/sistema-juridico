@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/full.css') }}">
+
+</head>
+<body>
+  
+    <section class="full-box cover dashboard-sideBar">
+		<div class="full-box dashboard-sideBar-bg btn-menu-dashboard"></div>
+		<div class="full-box dashboard-sideBar-ct">
+			<!--SideBar Title -->
+			<div class="full-box text-uppercase text-center text-titles dashboard-sideBar-title">
+                    <br>
+                    <img src="../static/img/IMG-20191111-WA0001.jpg" width="250px" height="180px">
+                <hr>
+			</div>
+    
+						
+			<!-- Menu -->
+			<ul class="list-unstyled full-box dashboard-sideBar-Menu">
+                <li>
+					<a href="{{ url_for('inicio') }}"> Inicio</a>
+				</li>
+				<li>
+					<a href="{{ url_for('Registroclientes') }}" class="btn-sideBar-SubMenu">Registro de Clientes</a>
+				</li>
+				<li>
+					<a href="{{ url_for('Servicios') }}" class="btn-sideBar-SubMenu">Servicios</a>
+				</li>
+				<li>
+					<a href="{{ url_for('Citas') }}" class="btn-sideBar-SubMenu">Citas</a>
+				</li>	
+				<li>
+					<a href="{{ url_for('Registroadmin') }}" class="btn-sideBar-SubMenu">Administracion</a>
+                </li>
+                <li>
+					<a href="{{ url_for('Cliser') }}" class="btn-sideBar-SubMenu">Clientes y Servicios</a>
+				</li>
+            </ul>
+            <hr>
+		</div>
+	</section>
+    
+    <div class="franja">
+            <h4 class="parrafito">
+                <a href="{{ url_for('logout') }}">Cerrar Sesion</a>
+            </h4>
+    </div>
+    
+     <center>
+    <div>
+      
+        <div class="form">
+                <div class="lista">
+                        <hr class="rh">
+                 <a href="{{ url_for('Listadmin') }}" class="btn btn-success">LISTA DE ADMINISTRADORES</a>
+                 <hr class="rh">
+                </div>
+        <div class="cuenta">
+     <h1>Informacion de Administrador</h1><br>
+     {% with messages = get_flashed_messages() %}
+     {% if messages%}
+     {% for message in messages%}
+     <p>{{ message }}</p>
+     {% endfor%}
+     {% endif %}
+     {% endwith%}
+          
+     
+              <form class="formulario" action="/ActualizarAdmin/{{registros.0}}" method="POST">
+                <label class="color">DUI:</label><br>
+                <input class="fo" type="text" name="DUI" value="{{registros.0}}"><br><br>
+                <label class="color">Nombres:</label><br>
+                <input class="fo" type="text" name="NOMBRES" value="{{registros.1}}"><br><br>
+                <label class="color">Apellidos:</label><br>
+                <input class="fo" type="text" name="APELLIDOS" value="{{registros.2}}"><br><br>
+                <label class="color">Telefono:</label><br>
+                <input class="fo" type="text" name="TELEFONO" value="{{registros.3}}"><br><br>
+                <label class="color">Direccion:</label><br>
+                <input class="fo" type="text" name="DIRECCION" value="{{registros.4}}"><br><br>
+
+                <h1>Datos de cuenta</h1>
+
+                <label class="color">Nombre de usuario:</label><br>
+                <input class="fo" type="text" name="USUARIO" value="{{registros.5}}"><br><br>
+                <label class="color">Contraseña:</label><br>
+                <input class="fo" type="password" name="CONTRASEÑA" value="{{registros.6}}"><br><br>
+                <label class="color">Correo:</label><br>
+                <input class="fo" type="email" name="CORREO" value="{{registros.7}}"><br><br><br>
+                   
+                   <button type="submit" class="boton">Actualizar</button>
+                
+            
+            </form>
+     
+            </div>
+        </div>
+    </div>   
+    </center> 
+</body>
+</html>

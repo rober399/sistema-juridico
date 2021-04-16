@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Login.css') }}">
+</head>
+<body>
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+			<ul>
+				{% for message in messages %}
+					<li class="message1">{{ message }}</li>
+				{% endfor%}
+			</ul>
+		{% endif%}
+	{%endwith%}
+    <center>
+    <div class="full-box login-container cover">
+		<form action="/autentificacion" method="post" autocomplete="off" class="logInForm">
+			<p class="text-center text-muted"><i class="zmdi zmdi-account-circle zmdi-hc-5x"></i></p>
+			<p class="text-center text-muted text-uppercase">Inicia sesión con tu cuenta</p>
+			<div class="form-group label-floating">
+			  <label class="control-label" for="UserName">Usuario</label><br>
+			  <input class="form-control" id="UserName" type="text" name="Nombres"><br>
+			 
+			</div><br><br>
+			<div class="form-group label-floating">
+			  <label class="control-label" for="UserPass">Contraseña</label><br>
+			  <input class="form-control" id="UserPass" type="password" name="contraseña"><br>
+			 
+			</div><br><br>
+			<div class="form-group text-center">
+				<button>Iniciar sesión</button>
+			</div>
+			
+			
+			
+			
+		</form>
+	</div>
+    </center>
+</body>
+</html>

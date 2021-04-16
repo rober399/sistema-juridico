@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/full.css') }}">
+
+</head>
+<body>
+  
+    <section class="full-box cover dashboard-sideBar">
+		<div class="full-box dashboard-sideBar-bg btn-menu-dashboard"></div>
+		<div class="full-box dashboard-sideBar-ct">
+            <!--SideBar Title -->
+            
+			<div class="full-box text-uppercase text-center text-titles dashboard-sideBar-title">
+                    <br>
+                    <img src="../static/img/IMG-20191111-WA0001.jpg" width="250px" height="180px">
+                <hr>
+			</div>
+    
+						
+			<!-- Menu -->
+			<ul class="list-unstyled full-box dashboard-sideBar-Menu">
+                <li>
+					<a href="{{ url_for('inicio') }}"> Inicio</a>
+				</li>
+				<li>
+					<a href="{{ url_for('Registroclientes') }}" class="btn-sideBar-SubMenu">Registro de Clientes</a>
+				</li>
+				<li>
+					<a href="{{ url_for('Servicios') }}" class="btn-sideBar-SubMenu">Servicios</a>
+				</li>
+				<li>
+					<a href="{{ url_for('Citas') }}" class="btn-sideBar-SubMenu">Citas</a>
+				</li>	
+				<li>
+					<a href="{{ url_for('Registroadmin') }}" class="btn-sideBar-SubMenu">Administracion</a>
+                </li>
+                <li>
+					<a href="{{ url_for('Cliser') }}" class="btn-sideBar-SubMenu">Clientes y Servicios</a>
+				</li>
+            </ul>
+            <hr>
+        </div>
+        
+    </section>
+    
+    <div class="franja">
+            <h4 class="parrafito">
+                <a href="{{ url_for('logout') }}">Cerrar Sesion</a>
+            </h4>
+       </div>
+	
+     <center>
+            
+        <div class="form">
+
+                <div class="lista">
+                        <hr class="rh">
+                 <a href="{{ url_for('Listacitas') }}" class="btn btn-success">LISTA DE CITAS</a>
+                 <hr class="rh">
+                </div>
+                
+        <div class="cuenta">
+     <h1>Información de la Cita</h1><br>
+              <form class="formulario" action="/ActualizarCita/{{registros.0}}" method="POST">
+                <label class="color">Fecha de la cita:</label><br>
+                <input class="fo" type="date" name="CITA" value="{{registros.1}}"><br><br>
+                 <label class="color">Hora de la cita:</label><br>
+                <input class="fo" type="text" name="HORA" value="{{registros.2}}"><br><br>
+                 <label class="color">DUI de cliente:</label><br>
+                <input class="fo" type="text" name="CLIENTE" value="{{registros.3}}"><br><br>
+                <label class="color">DUI de administrador:</label><br>
+                <input class="fo" type="text" name="ADMIN" value="{{registros.4}}"><br><br>
+                
+                   
+                   <button type="submit" class="boton">Guardar</button>
+                
+            
+            </form>
+            </div>
+        </div>
+        
+</center> 
+</body>
+</html>
